@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "name": "Anti-pulling aids",
+            "description": "No pull harnesses are designed to restrict a dog's natural movement in order to train them into walking without yanking on the leash and trying to run ahead of you.",
+            "image_link": "assets/gears/antipulling.jpg"
+        },
+        {
+            "name": "Bowl",
+            "description": "A raised dog bowl is a great idea for most dogs, even small dogs, but are particularly beneficial to medium and larger dogs.",
+            "image_link": "assets/gears/bowl.jpg"
+        },
+        {
+            "name": "Bedding",
+            "description": "Dogs also need a good night's rest to stay healthy. This is especially important for older dogs and larger breeds who need a bit more sleep than their younger, smaller counterparts.",
+            "image_link": "assets/gears/bedding.jpg"
+        },
+        {
+            "name": "Muzzle",
+            "description": "A muzzle is a device that is placed over the snout of an animal to keep them from biting or otherwise opening their mouth.",
+            "image_link": "assets/gears/muzzle.jpg"
+        },
+        {
+            "name": "Leash",
+            "description": "A leash is a rope or similar material used to control an animal by attaching it to a collar, harness, or halter. In British English, a leash is generally for a larger animal, with lead being more commonly used when walking a dog..",
+            "image_link": "assets/gears/leash.png"
+        }
+    ]
+}

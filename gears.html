@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<title>Gears & Training - THE LEARNING LEASH</title>
+</head>
+
+<body>
+	<nav class="navbar fixed-top px-4">
+		<div class="container-fluid">
+			<div>
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="border: none">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand ms-2 fontPoppins" href="home.html">THE LEARNING LEASH</a>
+			</div>
+			<form class="d-md-flex d-none" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+				<button class="btn btn-outline-secondary" type="submit">Search</button>
+			</form>
+			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title fontPoppins" id="offcanvasNavbarLabel">Menu</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="breeds.html">Breeds</a></li>
+						<li class="nav-item"><a class="nav-link" href="nutrition.html">Nutritions</a></li>
+						<li class="nav-item"><a class="nav-link active" href="#">Gears and Accessories</a></li>
+						<li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+					</ul>
+					<form class="d-flex d-md-none mt-3" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+							id="search">
+						<button class="btn btn-outline-secondary" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid px-5" x-data="{
+		dataList: [],
+		dataReceived: false, 
+		goToPage,
+		getDataList,
+		openModal,
+		showModal: false,
+		modalContent: '',
+		otherModal: ''
+	}">
+		<div class="d-flex justify-content-between mt-5 pt-5" x-init="fetch('otherModal.html')
+		.then(response => response.text())
+		.then(data => {
+			otherModal = data;
+		})
+		.catch(error => {
+			console.error('Error loading modal content:', error);
+		});">
+			<div class="d-flex fontPoppins">
+				<img src="assets/icons/dog-tags.png" style="height: 50px;">
+				<h2 class="mt-2 fw-bold">GEARS AND ACCESSORIES</h1>
+			</div>
+			<div x-data="{letters: Array.from({ length: 1 }, (_, index) => index+1)}" class="d-flex mt-2">
+				<template x-for="(btnText, index) in letters">
+					<button class="btn me-0 me-1 my-0 py-0 px-1 btn-circle" x-on:click="goToPage(index)">
+						<p x-text="btnText" class="fs-5"></p>
+					</button>
+				</template>
+			</div>
+		</div>
+		<div class="fontDMSans mt-3 mb-5 text-wrap" x-init="goToPage(0)">
+			Welcome to the "Gears and Accessories" section of our website, where we're your trusted source for all
+			things canine equipment. Here, we've curated a diverse selection of gears and accessories tailored to suit
+			dogs of various sizes, and we're here to guide you on how to make the most of them. Whether you have a
+			petite pup or a majestic giant, our aim is to provide you with valuable insights on which products are best
+			suited for your furry friend.
+			Discover a wide range of products, from collars and harnesses to leashes, toys, and much more. We'll not
+			only showcase these items but also offer tips and advice on how to use them effectively. Our reviews and
+			recommendations will help you make informed choices, ensuring your dog's comfort, safety, and happiness.
+		</div>
+		<div class="container-fluid row row-cols-2" style="margin: auto;">
+			<template x-for="data in dataList">
+				<div @click="openModal(data)" class="card mb-3 col cardContainer me-lg-2 me-0"
+					style="border: none; background-color: #f4f4f4 !important;" x-show="dataReceived"
+					data-bs-toggle="modal" data-bs-target="#modal">
+					<div class="row g-0">
+						<div class="col-md-6 mt-6">
+							<img class="img-fluid rounded w-100" x-bind:src="data.image_link"
+								x:bind:alt="data.image_link" style="height: 30vh; object-fit: cover;">
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<h5 class="card-title fontPoppins fw-bold" x-text="data.name"></h5>
+								<p class="card-text text-wrap line-clamp fontDMSans" x-text="data.description">
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</template>
+			<div class="container-fluid row" x-show="!dataReceived" style="height: 50vh;  margin: auto;">
+				<div class=" spinner-border" role="status"
+					style="height: 40vh; width: 40vh; border-width: 15px; margin: auto;">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</div>
+		<div x-html="otherModal"></div>
+	</div>
+	<script>
+		function getDataList(index) {
+			this.dataReceived = false;
+			this.dataList = [];
+			fetch('data/gears.json').then(response => response.json()).then(data => {
+				for (const x of data.data) {
+					this.dataList.push(x)
+				}
+			})
+		}
+		async function goToPage(index) {
+			let btnCircs = document.querySelectorAll('button.btn-circle');
+			let btnSelected = btnCircs[index];
+			for (const btn of btnCircs)
+				btn.classList.remove('btn-circle-selected');
+			btnSelected.classList.add('btn-circle-selected');
+			this.getDataList(index);
+			setTimeout(() => {
+				this.dataReceived = true;
+			}, 1500);
+		}
+		function openModal(data) {
+			this.modalContent = data;
+		}
+	</script>
+</body>
+
+</html>

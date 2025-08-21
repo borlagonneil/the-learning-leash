@@ -1,0 +1,121 @@
+<div class="modal fade" id="breedModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel" x-text="modalContent.name"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5">
+                <div class="container-fluid d-block d-lg-flex justify-content-between align-items-center">
+                    <img x-bind:src="modalContent.other.image_link" style="width: 40%; object-fit: cover;">
+                    <div class="w-50">
+                        <h4 class="mt-2 fw-bold fontPoppins">Name:</h4>
+                        <h4 class="card-text text-wrap line-clamp fontDMSans" x-text="modalContent.name"
+                            style="text-indent: 30px;">
+                        </h4>
+                        <h4 class="mt-2 fw-bold fontPoppins">Description:</h4>
+                        <h4 class="card-text text-wrap fontDMSans" x-text="modalContent.description"
+                            style="text-indent: 30px;">
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-6 row g-0">
+                        <div class="col-4">
+                            <h6 class="mt-2 fw-bold fontPoppins">Lifespan</h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Max: ' + modalContent.other.max_life_expectancy + ' years'">
+                            </h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Min: ' + modalContent.other.min_life_expectancy + ' years'">
+                            </h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mt-2 fw-bold fontPoppins">Height (female):</h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Max: ' + modalContent.other.max_height_female + ' inches'">
+                            </h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Min: ' + modalContent.other.min_height_female + ' inches'">
+                            </h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mt-2 fw-bold fontPoppins">Height (male):</h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Max: ' + modalContent.other.max_height_male + ' inches'">
+                            </h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Min: ' + modalContent.other.min_height_male + ' inches'">
+                            </h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mt-2 fw-bold fontPoppins">Weight (female):</h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Max: ' + modalContent.other.max_weight_female + ' kilograms'">
+                            </h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Min: ' + modalContent.other.min_weight_female + ' kilograms'">
+                            </h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mt-2 fw-bold fontPoppins">Weight (male):</h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Max: ' + modalContent.other.max_weight_male + ' kilograms'">
+                            </h6>
+                            <h6 class="ms-2 fontPoppins"
+                                x-text="'Min: ' + modalContent.other.min_weight_male + ' kilograms'">
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-6 row g-3 justify-content-center mt-0">
+                        <div class="col-6">
+                            <h6 class="mt-2 fw-bold fontPoppins">Playfulness:</h6>
+                            <div class="progress fontPoppins">
+                                <div class="progress-bar" role="progressbar"
+                                    x-bind:style="{width: ((modalContent.other.playfulness / 5) * 100) + '%'}"
+                                    x-text="modalContent.other.playfulness">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="mt-2 fw-bold fontPoppins">Protectiveness:</h6>
+                            <div class="progress fontPoppins">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                    x-bind:style="{width: ((modalContent.other.protectiveness / 5) * 100) + '%'}"
+                                    x-text="modalContent.other.protectiveness">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="mt-2 fw-bold fontPoppins">Energy:</h6>
+                            <div class="progress fontPoppins">
+                                <div class="progress-bar bg-warning" role="progressbar"
+                                    x-bind:style="{width: ((modalContent.other.energy / 5) * 100) + '%'}"
+                                    x-text="modalContent.other.energy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="mt-2 fw-bold fontPoppins">Trainability:</h6>
+                            <div class="progress fontPoppins">
+                                <div class="progress-bar bg-info" role="progressbar"
+                                    x-bind:style="{width: ((modalContent.other.trainability / 5) * 100) + '%'}"
+                                    x-text="modalContent.other.trainability">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="mt-2 fw-bold fontPoppins">Barking:</h6>
+                            <div class="progress fontPoppins">
+                                <div class="progress-bar bg-danger" role="progressbar"
+                                    x-bind:style="{width: ((modalContent.other.barking / 5) * 100) + '%'}"
+                                    x-text="modalContent.other.barking">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "name": "Treats",
+            "description": "Dogs often munch on dental sticks, rawhides, training rewards, bones, among other items to satisfy their sweet tooth.They give your dog something to do to alleviate anxiety, and they keep their teeth clean and strong.",
+            "image_link": "assets/nutritions/treats.jpg"
+        },
+        {
+            "name": "Fruits",
+            "description": "Fresh dog foods often include vegetables and fruits in diets formulated for dogs because they offer a source of vitamins, minerals, and antioxidants.",
+            "image_link": "assets/nutritions/fruits.jpg"
+        },
+        {
+            "name": "Vegetables",
+            "description": "Vegetables are best served plain, chopped into bite-sized pieces, and in small amounts.",
+            "image_link": "assets/nutritions/vegetables.jpg"
+        },
+        {
+            "name": "Meats",
+            "description": "Meat does provide all of those amino acids, but many plant proteins do not. However, a diet consisting solely of meat products will not meet all of your dog's dietary requirements.",
+            "image_link": "assets/nutritions/meats.jpg"
+        },
+        {
+            "name": "Rice",
+            "description": "Yes, dogs can eat white rice. Although lower in nutritional value than brown rice, whitevarieties of rice can be included in a dog's diet. Since it's fairly bland, vets often recommend white rice for dogs with an upset stomach.",
+            "image_link": "assets/nutritions/rice.jpg"
+        }
+    ]
+}

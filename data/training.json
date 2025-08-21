@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "name": "Come",
+            "description": "Purpose: to signal your dog to come back to you, keeping your pup out of trouble.",
+            "image_link": "assets/training/come.png"
+        },
+        {
+            "name": "Down or Lie Down",
+            "description": "Purpose: to calm down an excited dog and address some dog's behavioural issues.",
+            "image_link": "assets/training/lie_down.jpg"
+        },
+        {
+            "name": "Wait",
+            "description": "Purpose: to train your dog not to move or wander.",
+            "image_link": "assets/training/sitstay.jpg"
+        },
+        {
+            "name": "Sit-Stay",
+            "description": "Purpose: to calm your dog down and keep them self-controlled.",
+            "image_link": "assets/training/wait.jpg"
+        }
+    ]
+}

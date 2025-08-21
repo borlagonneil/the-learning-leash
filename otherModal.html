@@ -1,0 +1,25 @@
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel" x-text="modalContent.name"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5">
+                <div class="container-fluid d-flex justify-content-center">
+                    <img x-bind:src="modalContent.image_link" style="height: 50vh; object-fit: cover;">
+                </div>
+                <div style="margin: auto;">
+                    <h4 class="mt-2 fw-bold fontPoppins">Name:</h4>
+                    <h4 class="card-text text-wrap line-clamp fontDMSans" x-text="modalContent.name"
+                        style="text-indent: 30px;">
+                    </h4>
+                    <h4 class="mt-2 fw-bold fontPoppins">Description:</h4>
+                    <h4 class="card-text text-wrap line-clamp fontDMSans" x-text="modalContent.description"
+                        style="text-indent: 30px;">
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

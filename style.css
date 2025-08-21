@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Poppins:wght@500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.main {
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #ffffff;
+}
+
+.fontPoppins {
+  font-family: Poppins;
+}
+
+.fontDMSans {
+  font-family: DM Sans;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.blueBorder {
+  border-radius: 25px;
+  background-color: #bde0fe !important;
+  width: fit-content;
+  padding: 10px !important;
+}
+
+.noStyleButton {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card-img-top {
+  height: 12rem;
+  object-fit: cover;
+}
+
+.homeDiv {
+  padding-bottom: 100px;
+}
+
+.card-text-home {
+  height: 200px;
+  overflow: hidden;
+
+}
+
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 60px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.btn-circle:hover {
+  border: black solid 2px;
+  background-color: #ffafcc;
+}
+
+.btn-circle-selected {
+  border: black solid 2px;
+  background-color: #ffafcc;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  hyphens: auto;
+}
+
+.card {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .07);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+  padding: 14px 36px 14px 36px;
+  cursor: pointer;
+  width: 49%;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .5), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.progress {
+  background-color: #adb5bd;
+}

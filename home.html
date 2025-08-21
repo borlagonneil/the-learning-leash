@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<title>Home - THE LEARNING LEASH</title>
+</head>
+
+<body>
+	<nav class="navbar fixed-top px-4">
+		<div class="container-fluid">
+			<div>
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="border: none">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand ms-2 fontPoppins" href="#">THE LEARNING LEASH</a>
+			</div>
+			<form class="d-md-flex d-none" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-secondary" type="submit">Search</button>
+			</form>
+			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title fontPoppins" id="offcanvasNavbarLabel">Menu</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="breeds.html">Breeds</a></li>
+						<li class="nav-item"><a class="nav-link" href="nutrition.html">Nutritions</a></li>
+						<li class="nav-item"><a class="nav-link" href="gears.html">Gears and Accessories</a></li>
+						<li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+					</ul>
+					<form class="d-flex d-md-none mt-3" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-secondary" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="main mt-5 p-5" x-data="{
+		breedsList: [],
+		dataReceived: false, 
+		goToBreedPage,
+		getData,
+		openModal,
+		showModal: false,
+		modalContent: {
+			other: {
+				image_link: ''
+			}
+		},
+		modalPrepare,
+		breedModal: '',
+		otherModal: '',
+		nutri: [],
+		gear: [],
+		train: []
+	}">
+		<h1 class="text-center fontPoppins display-5" x-init="modalPrepare()">THE LEARNING LEASH</h1>
+		<p class="fontDMSans" style="font-size: 90%;">
+			Welcome to "The Learning Leash," your trusted source for all things dog education. At The Learning Leash,
+			we're
+			passionate about helping dog owners become well-informed and
+			responsible pet parents. Our mission is to provide you with valuable insights on various dog breeds, their
+			unique characteristics, and
+			how to choose the right one for your lifestyle. We delve into the world of canine nutrition, offering
+			guidance
+			on providing a balanced and healthy diet for your furry companion. Discover the latest and most effective
+			gear
+			and accessories to ensure your dog's comfort, safety, and style. Plus, we'll guide you through the exciting
+			journey of training your four-legged friend, from basic obedience to advanced tricks and behavioral tips.
+			Join
+			us as we embark on a journey of knowledge and companionship, strengthening the bond between you and your
+			beloved
+			canine companion. Welcome to "The Learning Leash" - where every dog deserves a lifetime of learning and
+			love.
+		</p>
+		<img src="assets/home/homePic.jpg" class="img-fluid w-100" alt="Image of Dogs">
+		<h1 class="fs-6 fontPoppins mt-5">Top Articles</h1>
+		<h1 class="fs-3 fontPoppins blueBorder">Trending in Dogs</h1>
+		<div class="row">
+			<div class="col-lg-8 col-12 px-lg-5 container d-flex justify-content-between p-0 m-0">
+				<button class="noStyleButton fontPoppins blueBorder" onclick="toggleButton(this, 'breed')">
+					<img src="assets/icons/dog-bone.png" style="height: 50px;">
+					Breeds
+				</button>
+				<button class="noStyleButton fontPoppins" onclick="toggleButton(this, 'nutri')">
+					<img src="assets/icons/stethoscope.png" style="height: 50px;">
+					Nutrition
+				</button>
+				<button class="noStyleButton fontPoppins" onclick="toggleButton(this, 'gear')">
+					<img src="assets/icons/dog-tags.png" style="height: 50px;">
+					Gears...
+				</button>
+				<button class="noStyleButton fontPoppins" onclick="toggleButton(this, 'training')">
+					<img src="assets/icons/dog.png" style="height: 50px;">
+					Training
+				</button>
+			</div>
+			<div class="col-lg-4 col-0"></div>
+		</div>
+		<div class="homeDiv mt-4" id="breed">
+			<div class="row" x-init="goToBreedPage(0)">
+				<template x-for="breed in breedsList">
+					<div @click="openModal(breed)" class="card mb-3 col-6 cardContainer me-lg-2 me-0"
+						style="border: none; background-color: #f4f4f4 !important;" x-show="dataReceived"
+						data-bs-toggle="modal" data-bs-target="#breedModal">
+						<div class="row g-0">
+							<div class="col-md-6 mt-6">
+								<img class="img-fluid rounded w-100" x-bind:src="breed.other.image_link"
+									x:bind:alt="breed.other.image_link">
+							</div>
+							<div class="col-md-6">
+								<div class="card-body">
+									<h5 class="card-title fontPoppins fw-bold" x-text="breed.name"></h5>
+									<p class="card-text text-wrap line-clamp fontDMSans" x-text="breed.description">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<div class="homeDiv mt-4" id="nutri" style="display: none;">
+			<div class="row">
+				<template x-for="data in nutri">
+					<div @click="openModal(data)" class="card mb-3 col-6 cardContainer me-lg-2 me-0"
+						style="border: none; background-color: #f4f4f4 !important;" x-show="dataReceived"
+						data-bs-toggle="modal" data-bs-target="#modal">
+						<div class="row g-0">
+							<div class="col-md-6 mt-6">
+								<img class="img-fluid rounded w-100" x-bind:src="data.image_link"
+									x:bind:alt="data.image_link" style="height: 30vh; object-fit: cover;">
+							</div>
+							<div class="col-md-6">
+								<div class="card-body">
+									<h5 class="card-title fontPoppins fw-bold" x-text="data.name"></h5>
+									<p class="card-text text-wrap line-clamp fontDMSans" x-text="data.description">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<div class="homeDiv mt-4" id="gear" style="display: none;">
+			<div class="row">
+				<template x-for="data in gear">
+					<div @click="openModal(data)" class="card mb-3 col-6 cardContainer me-lg-2 me-0"
+						style="border: none; background-color: #f4f4f4 !important;" x-show="dataReceived"
+						data-bs-toggle="modal" data-bs-target="#modal">
+						<div class="row g-0">
+							<div class="col-md-6 mt-6">
+								<img class="img-fluid rounded w-100" x-bind:src="data.image_link"
+									x:bind:alt="data.image_link" style="height: 30vh; object-fit: cover;">
+							</div>
+							<div class="col-md-6">
+								<div class="card-body">
+									<h5 class="card-title fontPoppins fw-bold" x-text="data.name"></h5>
+									<p class="card-text text-wrap line-clamp fontDMSans" x-text="data.description">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<div class="homeDiv mt-4" id="training" style="display: none;">
+			<div class="row">
+				<template x-for="data in train">
+					<div @click="openModal(data)" class="card mb-3 col-6 cardContainer me-lg-2 me-0"
+						style="border: none; background-color: #f4f4f4 !important;" x-show="dataReceived"
+						data-bs-toggle="modal" data-bs-target="#modal">
+						<div class="row g-0">
+							<div class="col-md-6 mt-6">
+								<img class="img-fluid rounded w-100" x-bind:src="data.image_link"
+									x:bind:alt="data.image_link" style="height: 30vh; object-fit: cover;">
+							</div>
+							<div class="col-md-6">
+								<div class="card-body">
+									<h5 class="card-title fontPoppins fw-bold" x-text="data.name"></h5>
+									<p class="card-text text-wrap line-clamp fontDMSans" x-text="data.description">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<div x-html="breedModal"></div>
+		<div x-html="otherModal"></div>
+		<div class="container-fluid row" x-show="!dataReceived" style="height: 50vh;">
+			<div class=" spinner-border" role="status"
+				style="height: 40vh; width: 40vh; border-width: 15px; margin: auto;">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		function toggleButton(clickedButton, divId) {
+			var buttons = document.getElementsByClassName("noStyleButton");
+			var divs = document.getElementsByClassName("homeDiv");
+			for (var i = 0; i < divs.length; i++)
+				divs[i].style.display = "none";
+
+			for (var i = 0; i < buttons.length; i++)
+				buttons[i].classList.remove("blueBorder");
+
+			document.getElementById(divId).style.display = "block";
+			clickedButton.classList.add("blueBorder");
+		}
+		function getData(index) {
+			this.dataReceived = false;
+			this.breedsList = [];
+			var apiKey = '8Ayr2QMWSu93nNeMc/c6TQ==oCU294t7ApTO9CCu';
+			breeds = fetch(`https://dogapi.dog/api/v2/breeds?page[number]=23`).then(response => response.json())
+				.then(data => {
+					for (const [y, x] of data.data.entries()) {
+						var name = x.attributes.name;
+						var url = 'https://api.api-ninjas.com/v1/dogs?name=' + name;
+						let other;
+						fetch(url, {
+							method: 'GET',
+							headers: {
+								'X-Api-Key': apiKey,
+								'Content-Type': 'application/json'
+							}
+						}).then(response => {
+							if (!response.ok)
+								throw new Error('Network response was not ok');
+							return response.json();
+						}).then(result => {
+							if (this.breedsList.length < 4) {
+								this.breedsList.push({
+									index: y,
+									name: x.attributes.name,
+									description: x.attributes.description,
+									other: result[0]
+								})
+								this.breedsList.sort((a, b) => a.index - b.index);
+							}
+						}).catch(error => {
+							console.error('Error:', error);
+						});
+					}
+				});
+			this.dataReceived = false;
+			fetch('data/nutrition.json').then(response => response.json()).then(data => {
+				for (const x of data.data) {
+					if (this.nutri.length < 4)
+						this.nutri.push(x)
+				}
+			})
+			fetch('data/gears.json').then(response => response.json()).then(data => {
+				for (const x of data.data) {
+					if (this.gear.length < 4)
+						this.gear.push(x)
+				}
+			})
+			fetch('data/training.json').then(response => response.json()).then(data => {
+				for (const x of data.data) {
+					if (this.train.length < 4)
+						this.train.push(x)
+				}
+			})
+		}
+		async function goToBreedPage(index) {
+			this.getData(index);
+			setTimeout(() => {
+				this.dataReceived = true;
+			}, 2000);
+		}
+		function openModal(data) {
+			console.log(data);
+			this.modalContent = data;
+		}
+		function modalPrepare() {
+			fetch('breedModal.html')
+				.then(response => response.text())
+				.then(data => {
+					this.breedModal = data;
+				})
+				.catch(error => {
+					console.error('Error loading modal content:', error);
+				});
+			fetch('otherModal.html')
+				.then(response => response.text())
+				.then(data => {
+					this.otherModal = data;
+				})
+				.catch(error => {
+					console.error('Error loading modal content:', error);
+				});
+		}
+	</script>
+</body>
+
+</html>
